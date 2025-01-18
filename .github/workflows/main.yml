@@ -1,25 +1,31 @@
 name: Deploy to GitHub Pages
-    on:
-      push:
+
+on:
+    push:
         branches:
           - main
-    jobs:
-      build-and-deploy:
+jobs:
+    deploy:
         runs-on: ubuntu-latest
         steps:
-        - name: Checkout
-          uses: actions/checkout@v1
+        - name: Checkout code
+          uses: actions/checkout@v3
 
-        - name: Build
-          run: |
-            npm install
-            npm run-script build
-          env:
-            REACT_APP_API_KEY: ${{ secrets.REACT_APP_API_KEY }}
+        - name: Set up Node.js
+          uses: actions/setup-node@v3
 
-        - name: Deploy
-          uses: JamesIves/github-pages-deploy-action@releases/v3
+        - name: Install dependencies
+          run: npm install
+
+        - name: Set environment variable
+          run: echo "REACT_APP_API_KEY=${{ secrets.REACT_APP_API_KEY }}" >> $GITHUB_ENV
+
+        - name: Build the project
+          run: npm run build
+
+        - name: Deploy to GitHub Pages
+          uses: peaceiris/actions-gh-pages@v3
           with:
-            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN_KEY }}
-            BRANCH: gh-pages
-            FOLDER: dist
+            github_token: ${{ secrets.GITHUB_TOKEN }}
+            publish_dir: build
+            force_orphan: true
