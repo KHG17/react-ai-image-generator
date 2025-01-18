@@ -6,6 +6,7 @@ const ImageGenerator = () => {
     const [ image_url, setImage_url ] = useState("/");
     const [ loading, setLoading ] = useState(false);
     let inputRef = useRef(null);
+    const secretKey = process.env.REACT_APP_OPENAI_API_KEY;
 
 
     const imageGenerator = async () => {
@@ -20,7 +21,7 @@ const ImageGenerator = () => {
                 headers: {
                     "Content-Type": "application/json",
                     Authorization:
-                    `Bearer ${process.env.REACT_APP_API_KEY}`,
+                    `Bearer ${secretKey}`,
                     "User-Agent": "Chrome",
                 },
                 body: JSON.stringify({
