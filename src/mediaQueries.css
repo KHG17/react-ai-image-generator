@@ -1,0 +1,22 @@
+@media only screen and (max-width: 1024px) {
+    .ai-image-generator {
+        margin-top: 70px;
+        margin-bottom: 10px;
+    }
+    .header {
+        font-size: 65px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .img-loading img {
+        width: 300px;
+    }
+    .search-box {
+        width: 75%;
+        height: 95px;
+    }
+    .loading-bar-full {
+        width: 300px;
+    }
+}
