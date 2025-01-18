@@ -5,20 +5,27 @@ on:
         branches:
           - main
 jobs:
-    build-and-deploy:
+    deploy:
         runs-on: ubuntu-latest
         steps:
         - name: Checkout code
           uses: actions/checkout@v3
 
-        - name: Access Secret
-          run: echo "The secret is ${{ secrets.REACT_APP_API_KEY }}"
-          env:
-            REACT_APP_API_KEY: ${{ secrets.REACT_APP_API_KEY }}
+        - name: Set up Node.js
+          uses: actions/setup-node@v3
 
-        - name: Deploy
-          uses: JamesIves/github-pages-deploy-action@4.0.0
+        - name: Install dependencies
+          run: npm install
+
+        - name: Set environment variable
+          run: echo "REACT_APP_API_KEY=${{ secrets.REACT_APP_API_KEY }}" >> $GITHUB_ENV
+
+        - name: Build the project
+          run: npm run build
+
+        - name: Deploy to GitHub Pages
+          uses: peaceiris/actions-gh-pages@v3
           with:
-            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN_KEY }}
-            BRANCH: gh-pages
+            github_token: ${{ secrets.GITHUB_TOKEN }}
+            publish_dir: build
             FOLDER: build
