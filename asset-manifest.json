@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/react-ai-image-generator/static/css/main.f202bcfe.css",
+    "main.js": "/react-ai-image-generator/static/js/main.f31ed687.js",
+    "static/js/488.f101b07e.chunk.js": "/react-ai-image-generator/static/js/488.f101b07e.chunk.js",
+    "static/media/default_image.jpg": "/react-ai-image-generator/static/media/default_image.100fe14d122d8fedc6bd.jpg",
+    "index.html": "/react-ai-image-generator/index.html",
+    "main.f202bcfe.css.map": "/react-ai-image-generator/static/css/main.f202bcfe.css.map",
+    "main.f31ed687.js.map": "/react-ai-image-generator/static/js/main.f31ed687.js.map",
+    "488.f101b07e.chunk.js.map": "/react-ai-image-generator/static/js/488.f101b07e.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f202bcfe.css",
+    "static/js/main.f31ed687.js"
+  ]
+}
